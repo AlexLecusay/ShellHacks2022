@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StreamBill</string>
+    <string name="placeholder">PLACEHOLDER</string>
+    <string name="img_content_description">Streaming Service Company Logo</string>
 </resources>
