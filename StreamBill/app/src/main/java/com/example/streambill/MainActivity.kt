@@ -1,6 +1,7 @@
 package com.example.streambill
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -10,19 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mRecyclerView : RecyclerView
-    lateinit var mRecyclerViewAdapter : RecyclerListAdapter
+    private lateinit var mRecyclerView : RecyclerView
+    private lateinit var mRecyclerViewAdapter : RecyclerListAdapter
     private var mListOfStreamingServices : MutableList<StreamingServiceInfo> = mutableListOf(
-        StreamingServiceInfo("Prime Video", "5.99"),
-        StreamingServiceInfo("Hulu", "7.99"),
-        StreamingServiceInfo("Netflix", "14.99"),
-        StreamingServiceInfo("Disney+", "8.99"),
-        StreamingServiceInfo("HBO+", "11.99"),
-        StreamingServiceInfo("Paramount+", "10.99"),
-        StreamingServiceInfo("ESPN+", "9.99"),
-        StreamingServiceInfo("Crunchy Roll", "9.99"),
-        StreamingServiceInfo("DropBox", "3.99"),
-        StreamingServiceInfo("AppleTV", "9.99"),
+        StreamingServiceInfo(R.drawable.pvlogo, "Prime Video", "5.99"),
+        StreamingServiceInfo(R.drawable.netflixlogo,"Netflix", "14.99"),
+        StreamingServiceInfo(R.drawable.disneypluslogo,"Disney+", "8.99"),
+        StreamingServiceInfo(R.drawable.hululogo,"Hulu", "7.99"),
+        StreamingServiceInfo(R.drawable.appletvlogo,"AppleTV", "9.99"),
+        StreamingServiceInfo(R.drawable.hbomaxlogo,"HBO Max", "11.99"),
+        StreamingServiceInfo(R.drawable.paramountpluslogo,"Paramount+", "10.99"),
+        StreamingServiceInfo(R.drawable.espnpluslogo,"ESPN+", "9.99"),
+        StreamingServiceInfo(R.drawable.crunchyrolllogo,"Crunchy Roll", "9.99"),
+        StreamingServiceInfo(R.drawable.dropboxlogo,"DropBox", "3.99")
         )
 
     override fun onCreate(savedInstanceState : Bundle?) {

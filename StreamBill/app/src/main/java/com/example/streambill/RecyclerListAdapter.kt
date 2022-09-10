@@ -1,8 +1,10 @@
 package com.example.streambill
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 class RecyclerListAdapter : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
 
     class ServiceProviderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        private val mStreamingServiceLogo : ImageView = itemView.findViewById(R.id.serviceImage)
         private val mServiceDescription : TextView = itemView.findViewById(R.id.serviceDescription)
         private val mServiceCost : TextView = itemView.findViewById(R.id.serviceCost)
 
         fun bindData(streamServiceInfo : StreamingServiceInfo){
+            mStreamingServiceLogo.setImageResource(streamServiceInfo.streamingServiceLogo)
             mServiceDescription.text = streamServiceInfo.streamingServiceCompany
             mServiceCost.text = streamServiceInfo.serviceCompanyCost
         }
@@ -47,6 +51,7 @@ class RecyclerListAdapter : ListAdapter<StreamingServiceInfo, RecyclerListAdapte
 }
 
 data class StreamingServiceInfo (
+    val streamingServiceLogo : Int,
     val streamingServiceCompany : String,
     val serviceCompanyCost : String
 )
