@@ -17,7 +17,6 @@ class DifferentStreamingServices : Activity() {
     private lateinit var mStreamingServiceCost : TextView
     private lateinit var mCancelStreamingService : CardView
     private lateinit var mReturnButton : Button
-    private lateinit var mCancelSubListener : MainActivity.RecyclerViewClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +35,5 @@ class DifferentStreamingServices : Activity() {
         mReturnButton.setOnClickListener {
             finish()
         }
-//        mCancelSubListener = object : MainActivity.RecyclerViewClickListener {
-//            override fun onItemClicked(streamingServiceInfo: StreamingServiceInfo, context : Context) {
-//
-//            }
-//        }
-//        mCancelStreamingService.setOnClickListener(mCancelSubListener as View.OnClickListener)
     }
 }
