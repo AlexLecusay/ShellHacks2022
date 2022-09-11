@@ -3,7 +3,7 @@ package com.example.streambill
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mRecyclerView : RecyclerView
-    private lateinit var mRecyclerViewAdapter : RecyclerListAdapter
+    lateinit var mRecyclerViewAdapter : RecyclerListAdapter
     private lateinit var mViewClickListener : RecyclerViewClickListener
+    private lateinit var mMainSubHeader : TextView
 
     private var mListOfStreamingServices : MutableList<StreamingServiceInfo> = mutableListOf(
         StreamingServiceInfo(R.drawable.pvlogo, "Prime Video", "5.99"),
@@ -46,6 +47,17 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
         mRecyclerView.adapter = mRecyclerViewAdapter
         mRecyclerViewAdapter.submitList(mListOfStreamingServices)
+        mMainSubHeader = findViewById(R.id.main_sub_header)
+        val monthlyTotal = String.format("Monthly Total : %.2f", calculateTotalToDisplay())
+        mMainSubHeader.text = monthlyTotal
+    }
+
+    private fun calculateTotalToDisplay() : Double {
+        var totalCost = 0.0
+        for (serviceCost in mListOfStreamingServices) {
+            totalCost += serviceCost.serviceCompanyCost.toDouble()
+        }
+        return totalCost
     }
 
     interface RecyclerViewClickListener {

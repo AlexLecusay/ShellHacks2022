@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +57,7 @@
         android:layout_height="50dp"
         android:textColor="@color/black"
         app:cardCornerRadius="30dp"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailed_card_view_pricing"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,4 +81,17 @@
             android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/detailed_return_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/return_text"
+        android:textColor="@color/white"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/ic_launcher_background"
+        app:layout_constraintBottom_toTopOf="@+id/detailed_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
