@@ -1,16 +1,13 @@
 package com.example.streambill
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-
 
 class RecyclerListAdapter (selectListener : MainActivity.RecyclerViewClickListener) : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
 
@@ -41,14 +38,14 @@ class RecyclerListAdapter (selectListener : MainActivity.RecyclerViewClickListen
     }
 
     class UserDiffUtil : DiffUtil.ItemCallback<StreamingServiceInfo>() {
-        override fun areItemsTheSame(
+        override fun areItemsTheSame (
             oldItem : StreamingServiceInfo,
             newItem : StreamingServiceInfo
         ): Boolean {
             return oldItem.streamingServiceCompany == newItem.streamingServiceCompany
         }
 
-        override fun areContentsTheSame(
+        override fun areContentsTheSame (
             oldItem: StreamingServiceInfo,
             newItem: StreamingServiceInfo
         ): Boolean {
