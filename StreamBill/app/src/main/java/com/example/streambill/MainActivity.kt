@@ -1,7 +1,7 @@
 package com.example.streambill
 
+import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mRecyclerView : RecyclerView
     private lateinit var mRecyclerViewAdapter : RecyclerListAdapter
+    private lateinit var mViewClickListener : RecyclerViewClickListener
+
     private var mListOfStreamingServices : MutableList<StreamingServiceInfo> = mutableListOf(
         StreamingServiceInfo(R.drawable.pvlogo, "Prime Video", "5.99"),
         StreamingServiceInfo(R.drawable.netflixlogo,"Netflix", "14.99"),
@@ -34,11 +36,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DifferentStreamingServices::class.java))
         }
         mRecyclerView = findViewById(R.id.main_recycler_view)
-        mRecyclerViewAdapter = RecyclerListAdapter()
+        mViewClickListener = object : RecyclerViewClickListener {
+            override fun onItemClicked(streamingServiceInfo: StreamingServiceInfo, context : Context) {
+                val intent = Intent(this@MainActivity, DifferentStreamingServices::class.java).apply {
+                    putExtra("ServiceLogo", streamingServiceInfo.streamingServiceLogo)
+                    putExtra("ServiceCompany", streamingServiceInfo.streamingServiceCompany)
+                    putExtra("CompanyCost", streamingServiceInfo.serviceCompanyCost)
+                }
+                startActivity(intent)
+            }
+        }
+        mRecyclerViewAdapter = RecyclerListAdapter(this, mViewClickListener)
         mRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
         mRecyclerView.adapter = mRecyclerViewAdapter
-
-
         mRecyclerViewAdapter.submitList(mListOfStreamingServices)
+    }
+
+    interface RecyclerViewClickListener {
+        fun onItemClicked(streamingServiceInfo : StreamingServiceInfo, context: Context)
     }
 }

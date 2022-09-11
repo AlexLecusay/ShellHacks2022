@@ -1,18 +1,24 @@
 package com.example.streambill
 
-import android.graphics.drawable.Drawable
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerListAdapter : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
+
+class RecyclerListAdapter (context : Context, selectListener : MainActivity.RecyclerViewClickListener) : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
+
+    private val mContext = context
+    private val mSelectListener = selectListener
 
     class ServiceProviderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        private val mCardView : CardView = itemView.findViewById(R.id.card_view)
         private val mStreamingServiceLogo : ImageView = itemView.findViewById(R.id.serviceImage)
         private val mServiceDescription : TextView = itemView.findViewById(R.id.serviceDescription)
         private val mServiceCost : TextView = itemView.findViewById(R.id.serviceCost)
@@ -31,6 +37,9 @@ class RecyclerListAdapter : ListAdapter<StreamingServiceInfo, RecyclerListAdapte
 
     override fun onBindViewHolder(holder : ServiceProviderViewHolder, position : Int) {
         holder.bindData(getItem(position))
+        holder.itemView.setOnClickListener {
+            mSelectListener.onItemClicked(getItem(position), holder.itemView.context)
+        }
     }
 
     class UserDiffUtil : DiffUtil.ItemCallback<StreamingServiceInfo>() {
