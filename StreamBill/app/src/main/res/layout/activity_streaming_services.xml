@@ -5,34 +5,79 @@
     android:id="@+id/detailed_window"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
     <ImageView
         android:id="@+id/detailed_image"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/detailed_description" />
-    <TextView
-        android:id="@+id/detailed_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is my world"
+        app:layout_constraintBottom_toTopOf="@id/detailed_card_view_description" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailed_card_view_description"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:textColor="@color/black"
+        android:background="@android:color/darker_gray"
+        app:cardCornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailed_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/detailed_pricing" />
-    <TextView
-        android:id="@+id/detailed_pricing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is my world"
+        app:layout_constraintBottom_toTopOf="@id/detailed_card_view_pricing" >
+        <TextView
+            android:id="@+id/detailed_description"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailed_card_view_pricing"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:textColor="@color/black"
+        android:background="@android:color/darker_gray"
+        app:cardCornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detailed_description"
+        app:layout_constraintTop_toBottomOf="@id/detailed_card_view_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/detailed_card_view_cancel" >
+        <TextView
+            android:id="@+id/detailed_pricing"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/detailed_card_view_cancel"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailed_card_view_pricing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" >
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_light"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailed_card_view_pricing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/detailed_cancel"
+            android:text="Cancel Subscription"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

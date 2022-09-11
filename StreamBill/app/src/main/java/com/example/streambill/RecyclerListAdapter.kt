@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 
-class RecyclerListAdapter (context : Context, selectListener : MainActivity.RecyclerViewClickListener) : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
+class RecyclerListAdapter (selectListener : MainActivity.RecyclerViewClickListener) : ListAdapter<StreamingServiceInfo, RecyclerListAdapter.ServiceProviderViewHolder>(UserDiffUtil()) {
 
-    private val mContext = context
     private val mSelectListener = selectListener
 
     class ServiceProviderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        private val mCardView : CardView = itemView.findViewById(R.id.card_view)
         private val mStreamingServiceLogo : ImageView = itemView.findViewById(R.id.serviceImage)
         private val mServiceDescription : TextView = itemView.findViewById(R.id.serviceDescription)
         private val mServiceCost : TextView = itemView.findViewById(R.id.serviceCost)

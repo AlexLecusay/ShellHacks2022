@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val mTestingButton : Button = findViewById(R.id.main_button_id)
-        mTestingButton.setOnClickListener {
-            startActivity(Intent(this, DifferentStreamingServices::class.java))
-        }
         mRecyclerView = findViewById(R.id.main_recycler_view)
         mViewClickListener = object : RecyclerViewClickListener {
             override fun onItemClicked(streamingServiceInfo: StreamingServiceInfo, context : Context) {
@@ -46,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        mRecyclerViewAdapter = RecyclerListAdapter(this, mViewClickListener)
+        mRecyclerViewAdapter = RecyclerListAdapter(mViewClickListener)
         mRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
         mRecyclerView.adapter = mRecyclerViewAdapter
         mRecyclerViewAdapter.submitList(mListOfStreamingServices)
